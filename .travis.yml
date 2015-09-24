@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.2.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: EnRTE681LFUkKUj2q+fQZjsfftDAtnKvyxytRuN56/7jK+71uH7FMXn1ABEVLK1Pfm/Twf61UI0st3XyyHhYz2BdpxL2dq++bHeCXZKabSlU8CKXUv9OrHH1FTkx+jev+zviRLQNQkvAdq7VEdH7Zrb6OM1V1vffCwRAETpyqoIbfdAJgoBCLMuDPOlZojIJKeZ4oGQ1m0xj3wvLqSB/3dAqCHr1mUZwhB4oPzmf6ZJ/LG4m8rYrIelMS0N3dBP2UFxiZudH12LfxLKOnMiCUR+LJ98JrPLnBOMQSZRNXcytfUQ8qPhBeLGwgfulTQLiJ8wTMjZrsiDB837oS2ZbyWOXALQse9C1qTQPokcnIu2dy7ycFNkyVTCcEe5puhwhGRCSFePds3TYYr/mIqNzwL7xIXf6OiG93dIkriH32RoclvP4ixewG7Rn3S0ppG5BF8G2ugnudqA7jC2U2itJHG+b/q0Wu+RaoNU+y9NoNHohIFvTl2OaDEJIGOX3/IB4pOXGa9R49/8J5o1qyivK+5IbH0mkQpm1YoVsumKZzLmZ0bglAMiYkVrFN13YIaU3P5Pzt254up9a510N8OFHyIlBjbszX+vIM69/1ZyanZDExIp2Gg+DDCISrw/f4vNgpgeIlpYZmrxjUtYPuqq3arwabZ7gXJc4yC5rVplwVGA=
+  app: enigmatic-stream-7700
+  on:
+    repo: kinchan33/rails_enpit
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
